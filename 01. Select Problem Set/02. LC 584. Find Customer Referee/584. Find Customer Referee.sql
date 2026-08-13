@@ -48,7 +48,7 @@ Output:
 ----------------------------------- SQL CODE -----------------------------------
 --------------------------------------------------------------------------------
 
--- Supported DB: MySQL, Oracle SQL & PostgreSQL
+-- Supported DB: MySQL & PostgreSQL
 
 SELECT name
 FROM Customer
