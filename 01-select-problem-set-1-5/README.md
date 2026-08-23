@@ -10,17 +10,17 @@ These problems focus on essential SQL concepts such as basic `SELECT` projection
 
 | # | Problem Name | Difficulty | Key Concepts Covered |
 | :--- | :--- | :--- | :--- |
-| **01** | [1757. Recyclable and Low Fat Products](./01.%20LC%201757.%20Recyclable%20and%20Low%20Fat%20Products) | Easy | `WHERE`, `AND` filtering |
-| **02** | [584. Find Customer Referee](./02.%20LC%20584.%20Find%20Customer%20Referee) | Easy | `IS NULL`, `OR`, handling `NULL` |
-| **03** | [595. Big Countries](./03.%20LC%20595.%20Big%20Countries) | Easy | `WHERE`, `OR` comparison |
-| **04** | [1148. Article Views I](./04.%20LC%201148.%20Article%20Views%20I) | Easy | Self-comparison (`author_id = viewer_id`), `DISTINCT`, `ORDER BY` |
-| **05** | [1683. Invalid Tweets](./05.%20LC%201683.%20Invalid%20Tweets) | Easy | String function `LENGTH()` |
+| **01** | [1757. Recyclable and Low Fat Products](./01-lc-1757-recyclable-and-low-fat-products) | Easy | `WHERE`, `AND` filtering |
+| **02** | [584. Find Customer Referee](./02-lc-584-find-customer-referee) | Easy | `IS NULL`, `OR`, handling `NULL` |
+| **03** | [595. Big Countries](./03-lc-595-big-countries) | Easy | `WHERE`, `OR` comparison |
+| **04** | [1148. Article Views I](./04-lc-1148-article-views-i) | Easy | Self-comparison (`author_id = viewer_id`), `DISTINCT`, `ORDER BY` |
+| **05** | [1683. Invalid Tweets](./05-lc-1683-invalid-tweets) | Easy | String function `LENGTH()` |
 
 ---
 
 ## 📝 Detailed Solutions & Explanations
 
-### 1. [LC 1757: Recyclable and Low Fat Products](./01.%20LC%201757.%20Recyclable%20and%20Low%20Fat%20Products)
+### 1. [LC 1757: Recyclable and Low Fat Products](./01-lc-1757-recyclable-and-low-fat-products)
 
 #### 📋 Problem Statement:
 Find the IDs of products that are both **low fat** (`low_fats = 'Y'`) and **recyclable** (`recyclable = 'Y'`).
@@ -42,7 +42,7 @@ WHERE low_fats = 'Y'
 
 ---
 
-### 2. [LC 584: Find Customer Referee](./02.%20LC%20584.%20Find%20Customer%20Referee)
+### 2. [LC 584: Find Customer Referee](./02-lc-584-find-customer-referee)
 
 #### 📋 Problem Statement:
 Find the names of customers who are **not referred by the customer with `id = 2`** (including customers who were not referred by anyone at all).
@@ -63,7 +63,7 @@ WHERE referee_id != 2
 
 ---
 
-### 3. [LC 595: Big Countries](./03.%20LC%20595.%20Big%20Countries)
+### 3. [LC 595: Big Countries](./03-lc-595-big-countries)
 
 #### 📋 Problem Statement:
 Find the **name**, **population**, and **area** of all big countries. A country is considered big if:
@@ -86,7 +86,7 @@ WHERE area >= 3000000
 
 ---
 
-### 4. [LC 1148: Article Views I](./04.%20LC%201148.%20Article%20Views%20I)
+### 4. [LC 1148: Article Views I](./04-lc-1148-article-views-i)
 
 #### 📋 Problem Statement:
 Find all authors who viewed at least one of their own articles. Return the result table sorted by `id` in **ascending order**.
@@ -108,7 +108,7 @@ ORDER BY id ASC;
 
 ---
 
-### 5. [LC 1683: Invalid Tweets](./05.%20LC%201683.%20Invalid%20Tweets)
+### 5. [LC 1683: Invalid Tweets](./05-lc-1683-invalid-tweets)
 
 #### 📋 Problem Statement:
 Find the IDs of tweets that are **invalid**. A tweet is invalid if the number of characters in the tweet's content is **strictly greater than 15**.

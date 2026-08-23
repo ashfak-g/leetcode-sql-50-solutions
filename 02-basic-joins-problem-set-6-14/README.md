@@ -10,21 +10,21 @@ This section covers essential relational database join techniques including `INN
 
 | # | Problem Name | Difficulty | Key Concepts Covered |
 | :--- | :--- | :--- | :--- |
-| **06** | [1378. Replace Employee ID With The Unique Identifier](./06.%20LC%201378.%20Replace%20Employee%20ID%20With%20The%20Unique%20Identifier) | Easy | `LEFT JOIN`, `NULL` handling |
-| **07** | [1068. Product Sales Analysis I](./07.%20LC%201068.%20Product%20Sales%20Analysis%20I) | Easy | `LEFT JOIN`, multi-table projection |
-| **08** | [1581. Customer Who Visited but Did Not Make Any Transactions](./08.%20LC%201581.%20Customer%20Who%20Visited%20but%20Did%20Not%20Make%20Any%20Transactions) | Easy | `LEFT JOIN`, `IS NULL`, `GROUP BY`, `COUNT()` |
-| **09** | [197. Rising Temperature](./09.%20LC%20197.%20Rising%20Temperature) | Easy | `Self-Join`, date comparison (`recordDate + 1`) |
-| **10** | [1661. Average Time of Process per Machine](./10.%20LC%201661.%20Average%20Time%20of%20Process%20per%20Machine) | Easy | `Self-Join`, `AVG()`, `ROUND()` |
-| **11** | [577. Employee Bonus](./11.%20LC%20577.%20Employee%20Bonus) | Easy | `LEFT JOIN`, `IS NULL`, `OR` filter |
-| **12** | [1280. Students and Examinations](./12.%20LC%201280.%20Students%20and%20Examinations) | Easy | `CROSS JOIN`, `LEFT JOIN`, `GROUP BY`, `COUNT()` |
-| **13** | [570. Managers with at Least 5 Direct Reports](./13.%20LC%20570.%20Managers%20with%20at%20Least%205%20Direct%20Reports) | Medium | `Self-Join`, `GROUP BY`, `HAVING COUNT() >= 5` |
-| **14** | [1934. Confirmation Rate](./14.%20LC%201934.%20Confirmation%20Rate) | Medium | `LEFT JOIN`, `AVG()`, `CASE`, `ROUND()`, `COALESCE()` |
+| **06** | [1378. Replace Employee ID With The Unique Identifier](./06-lc-1378-replace-employee-id-with-the-unique-identifier) | Easy | `LEFT JOIN`, `NULL` handling |
+| **07** | [1068. Product Sales Analysis I](./07-lc-1068-product-sales-analysis-i) | Easy | `LEFT JOIN`, multi-table projection |
+| **08** | [1581. Customer Who Visited but Did Not Make Any Transactions](./08-lc-1581-customer-who-visited-but-did-not-make-any-transactions) | Easy | `LEFT JOIN`, `IS NULL`, `GROUP BY`, `COUNT()` |
+| **09** | [197. Rising Temperature](./09-lc-197-rising-temperature) | Easy | `Self-Join`, date comparison (`recordDate + 1`) |
+| **10** | [1661. Average Time of Process per Machine](./10-lc-1661-average-time-of-process-per-machine) | Easy | `Self-Join`, `AVG()`, `ROUND()` |
+| **11** | [577. Employee Bonus](./11-lc-577-employee-bonus) | Easy | `LEFT JOIN`, `IS NULL`, `OR` filter |
+| **12** | [1280. Students and Examinations](./12-lc-1280-students-and-examinations) | Easy | `CROSS JOIN`, `LEFT JOIN`, `GROUP BY`, `COUNT()` |
+| **13** | [570. Managers with at Least 5 Direct Reports](./13-lc-570-managers-with-at-least-5-direct-reports) | Medium | `Self-Join`, `GROUP BY`, `HAVING COUNT() >= 5` |
+| **14** | [1934. Confirmation Rate](./14-lc-1934-confirmation-rate) | Medium | `LEFT JOIN`, `AVG()`, `CASE`, `ROUND()`, `COALESCE()` |
 
 ---
 
 ## 📝 Detailed Solutions & Explanations
 
-### 6. [LC 1378: Replace Employee ID With The Unique Identifier](./06.%20LC%201378.%20Replace%20Employee%20ID%20With%20The%20Unique%20Identifier)
+### 6. [LC 1378: Replace Employee ID With The Unique Identifier](./06-lc-1378-replace-employee-id-with-the-unique-identifier)
 
 #### 📋 Problem Statement:
 Show the **unique ID** of each user from the `Employees` table. If a user does not have a unique ID, display `null` instead.
@@ -45,7 +45,7 @@ LEFT JOIN EmployeeUNI
 
 ---
 
-### 7. [LC 1068: Product Sales Analysis I](./07.%20LC%201068.%20Product%20Sales%20Analysis%20I)
+### 7. [LC 1068: Product Sales Analysis I](./07-lc-1068-product-sales-analysis-i)
 
 #### 📋 Problem Statement:
 Report the **`product_name`**, **`year`**, and **`price`** for each `sale_id` in the `Sales` table.
@@ -66,7 +66,7 @@ LEFT JOIN Product
 
 ---
 
-### 8. [LC 1581: Customer Who Visited but Did Not Make Any Transactions](./08.%20LC%201581.%20Customer%20Who%20Visited%20but%20Did%20Not%20Make%20Any%20Transactions)
+### 8. [LC 1581: Customer Who Visited but Did Not Make Any Transactions](./08-lc-1581-customer-who-visited-but-did-not-make-any-transactions)
 
 #### 📋 Problem Statement:
 Find the IDs of users who visited the mall without making any transactions, and count the total number of such visits (`count_no_trans`).
@@ -91,7 +91,7 @@ GROUP BY Visits.customer_id;
 
 ---
 
-### 9. [LC 197: Rising Temperature](./09.%20LC%20197.%20Rising%20Temperature)
+### 9. [LC 197: Rising Temperature](./09-lc-197-rising-temperature)
 
 #### 📋 Problem Statement:
 Find all dates' `id` with higher temperatures compared to their previous dates (yesterday).
@@ -114,7 +114,7 @@ WHERE today.temperature > previous_day.temperature;
 
 ---
 
-### 10. [LC 1661: Average Time of Process per Machine](./10.%20LC%201661.%20Average%20Time%20of%20Process%20per%20Machine)
+### 10. [LC 1661: Average Time of Process per Machine](./10-lc-1661-average-time-of-process-per-machine)
 
 #### 📋 Problem Statement:
 Calculate the average processing time for each machine (`end` timestamp minus `start` timestamp), rounded to **3 decimal places** as `processing_time`.
@@ -141,7 +141,7 @@ GROUP BY a1.machine_id;
 
 ---
 
-### 11. [LC 577: Employee Bonus](./11.%20LC%20577.%20Employee%20Bonus)
+### 11. [LC 577: Employee Bonus](./11-lc-577-employee-bonus)
 
 #### 📋 Problem Statement:
 Report the `name` and `bonus` amount of employees who have a bonus **less than 1000** or did not receive any bonus (`null`).
@@ -164,7 +164,7 @@ WHERE Bonus.bonus < 1000
 
 ---
 
-### 12. [LC 1280: Students and Examinations](./12.%20LC%201280.%20Students%20and%20Examinations)
+### 12. [LC 1280: Students and Examinations](./12-lc-1280-students-and-examinations)
 
 #### 📋 Problem Statement:
 Find the number of times each student attended each exam, sorted by `student_id` and `subject_name`.
@@ -192,7 +192,7 @@ ORDER BY Students.student_id, Subjects.subject_name;
 
 ---
 
-### 13. [LC 570: Managers with at Least 5 Direct Reports](./13.%20LC%20570.%20Managers%20with%20at%20Least%205%20Direct%20Reports)
+### 13. [LC 570: Managers with at Least 5 Direct Reports](./13-lc-570-managers-with-at-least-5-direct-reports)
 
 #### 📋 Problem Statement:
 Find all managers who have at least **five direct reports**.
@@ -215,7 +215,7 @@ HAVING COUNT(employee.id) >= 5;
 
 ---
 
-### 14. [LC 1934: Confirmation Rate](./14.%20LC%201934.%20Confirmation%20Rate)
+### 14. [LC 1934: Confirmation Rate](./14-lc-1934-confirmation-rate)
 
 #### 📋 Problem Statement:
 Find the **confirmation rate** of each user (ratio of `'confirmed'` requests to total requests), rounded to **2 decimal places**. Users with 0 requests must show `0.00`.
