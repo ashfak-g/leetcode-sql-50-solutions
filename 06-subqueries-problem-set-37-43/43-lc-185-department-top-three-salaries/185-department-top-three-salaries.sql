@@ -1,0 +1,121 @@
+﻿/*
+Problem 185: Department Top Three Salaries
+
+Table: Employee
++--------------+---------+
+| Column Name  | Type    |
++--------------+---------+
+| id           | int     |
+| name         | varchar |
+| salary       | int     |
+| departmentId | int     |
++--------------+---------+
+- id is the primary key (column with unique values) for this table.
+- departmentId is a foreign key (reference column) of the ID from the Department table.
+- Each row of this table indicates the ID, name, and salary of an employee. It also contains the ID of their department.
+
+Table: Department
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| name        | varchar |
++-------------+---------+
+- id is the primary key (column with unique values) for this table.
+- Each row of this table indicates the ID of a department and its name.
+
+Task:
+A company's executives are interested in seeing who earns the most money in each of the company's departments. 
+A high earner in a department is an employee who has a salary in the top three unique salaries for that department.
+Write a solution to find the employees who are high earners in each of the departments.
+Return the result table in any order.
+
+Example 1:
+Input: 
+Employee table:
++----+-------+--------+--------------+
+| id | name  | salary | departmentId |
++----+-------+--------+--------------+
+| 1  | Joe   | 85000  | 1            |
+| 2  | Henry | 80000  | 2            |
+| 3  | Sam   | 60000  | 2            |
+| 4  | Max   | 90000  | 1            |
+| 5  | Janet | 69000  | 1            |
+| 6  | Randy | 85000  | 1            |
+| 7  | Will  | 70000  | 1            |
++----+-------+--------+--------------+
+Department table:
++----+-------+
+| id | name  |
++----+-------+
+| 1  | IT    |
+| 2  | Sales |
++----+-------+
+
+Output: 
++------------+----------+--------+
+| Department | Employee | Salary |
++------------+----------+--------+
+| IT         | Max      | 90000  |
+| IT         | Joe      | 85000  |
+| IT         | Randy    | 85000  |
+| IT         | Will     | 70000  |
+| Sales      | Henry    | 80000  |
+| Sales      | Sam      | 60000  |
++------------+----------+--------+
+
+Explanation: 
+In the IT department:
+- Max earns the highest unique salary (90000) -> Rank 1
+- Both Randy and Joe earn the second-highest unique salary (85000) -> Rank 2
+- Will earns the third-highest unique salary (70000) -> Rank 3
+
+In the Sales department:
+- Henry earns the highest salary (80000) -> Rank 1
+- Sam earns the second-highest salary (60000) -> Rank 2
+- There is no third-highest salary as there are only two employees.
+*/
+
+
+--------------------------------------------------------------------------------
+----------------------------------- SQL CODE -----------------------------------
+--------------------------------------------------------------------------------
+
+-- Supported DB: MySQL & PostgreSQL
+
+-- Approach 1: Window Function with DENSE_RANK() (Recommended)
+WITH RankedSalaries AS (
+    SELECT
+        d.name AS Department,
+        e.name AS Employee,
+        e.salary AS Salary,
+        DENSE_RANK() OVER (
+            PARTITION BY e.departmentId
+            ORDER BY e.salary DESC
+        ) AS salary_rank
+    FROM Employee AS e
+    JOIN Department AS d
+      ON e.departmentId = d.id
+)
+SELECT
+    Department,
+    Employee,
+    Salary
+FROM RankedSalaries
+WHERE salary_rank <= 3;
+
+
+-- Approach 2: Correlated Subquery (Classic Subquery Method)
+-- SELECT
+--     d.name AS Department,
+--     e1.name AS Employee,
+--     e1.salary AS Salary
+-- FROM Employee AS e1
+-- JOIN Department AS d
+--   ON e1.departmentId = d.id
+-- WHERE 3 > (
+--     SELECT COUNT(DISTINCT e2.salary)
+--     FROM Employee AS e2
+--     WHERE e2.departmentId = e1.departmentId
+--       AND e2.salary > e1.salary
+-- );
